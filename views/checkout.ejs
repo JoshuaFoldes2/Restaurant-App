@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<script>
+  async function calculate(){
+  	const response = await fetch('/route');
+  	const data = await response.json();
+  	document.write(data[0]);
+  	//var total = 0;
+  	//for(var i = 0; i < data.length; i++){
+  	//	var paraList = document.createElement("p");
+  	//	var paraCost = document.createElement("p");
+  	//	if(data[i][3] == "--")
+  	//		paraList.appendChild(document.createTextNode(data[i][0] + "X " + data[i][1] + " " + data[i][2]));
+  	//	else
+  	//		paraList.appendChild(document.createTextNode("game");//data[i][0] + "X " + data[i][3] + " " + data[i][1] + " " + data[i][2]));
+  	//	total += (parseFloat(data[i][0]) * parseFloat(data[i][4]));
+  	//	paraCost.appendChild(document.createTextNode("over);"//"$" + parseFloat(data[i][0]) * parseFloat(data[i][4])));
+  	//	document.getElementByID("list").appendChild(paraList);
+  	//	 document.getElementByID("cost").appendChild(paraCost);
+  	//	}
+  	//}
+};
+window.onload = function(){calculate()};
+</script>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <body style="background-color:red">
+    	<div style="width:100%;display:flex;justify-content:center;align-content:center;">
+    		<div style="width:50%;background-color:#CFD53B" id="list">
+    		</div>
+    		<div style="width:20%;">
+    		</div>
+    		<div style="width:30%;background-color:#CFD53B" id="cost">
+    		</div>
+    	</div>
+        <form class="item" action="/orderUp" method="post">
+          <button style="position: fixed;bottom: 0px;right: 0px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Purchase</button>
+        </form>
+    </body>
+</html>

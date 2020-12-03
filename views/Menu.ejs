@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<script>
+  function food(name, image, sizeList, spicinessList, priceList) { 
+   this.name = name; 
+   this.image = image;
+   this.sizeList = sizeList;
+   this.spicinessList = spicinessList;
+   this.priceList = priceList;
+  }
+  var x = 0;
+  var settings = ["appetizer","mainDish","drinks","desserts"];
+  var sizes = ["regular","large"];
+  var appetizer = [new food("Crab Ragoon","Crab_Ragoon.png",["5 count"],["--"],['5.95']), new food("Vegetable Spring Roll","Vegetable_Spring_Roll.png",["2 count"],["--"],['3.50']), new food("Egg Roll","Egg_Roll.png",["1 count"],["--"],['3.50']), new food("Dumplings","Dumplings.png",["5 count"],["--"],['6.95']), new food("Beef Teriyaki","Beef_Teriyaki.png",["4 count"],["--"],['7.25']),new food("Chinese BBQ Ribs","Chinese_BBQ_Ribs.png",["4 count"],["--"],['8.25'])];
+  var mainDish = [new food("Beef Chow Fun","Beef_Chow_Fun.png",["regular","large"],["--"],["11.50","14.50"]),new food("Shanghai Chicken","Shanghai_Chicken.png",["regular","large"],["mild","medium","hot"],["10.95","13.95"]),new food("Moo Goo Gai Pan","Moo_Goo_Gai_Pan.png",["regular","large"],["--"],["10.95","13.95"]),new food("Beancurd Homestyle","Beancurd_Homestyle.png",["regular","large"],["--"],["9.50","12.50"]),new food("Seafood Sizzling","Seafood_Sizzling.png",["regular","large"],["mild","medium","hot"],["14.25","17.25"]), new food("Dragon and Phoenix","Dragon_and_Phoenix.png",["regular","large"],["--"],["12.95","15.95"])];
+  var drinks = [new food("Pepsi","Pepsi.jpg",["20 oz.","1 Liter"],["--"],["1.00","2.50"]), new food("Dr. Pepper","Dr._Pepper",["20 oz.","1 Liter"],["--"],["1.00","2.50"]),new food("Mountain Dew","Mountain_Dew.png",["20 oz.","1 Liter"],["--"],["1.00","2.50"]),new food("Brisk Tea","Brisk_Tea.png",["20 oz.","1 Liter"],["--"],["1.00","2.50"]),new food("Orange Soda","Orange_Soda.png",["20 oz.","1 Liter"],["--"],["1.00","2.50"]),new food("Water","Water.jpg",["20 oz.","1 Liter"],["--"],["1.00","2.50"])];
+  var desserts = [new food("Red Bean Bun","Red_Bean_Bun.png",["4 count"],["--"],["5.00"]),new food("Egg Tarts","Egg_Tarts.png",["4 count"],["--"],["5.00"]),new food("Tanghulu","Tanghulu.png",["4 count"],["--"],["5.00"]),new food("Pumpkin Pancakes","Pumpkin_Pancakes.png",["4 count"],["--"],["5.00"]),new food("Fried Durian","Fried_Durian.png",["4 count"],["--"],["5.00"]),new food("Tangyuan","Tangyuan.png",["4 count"],["--"],["5.00"])];
+  function menuItems(category,num){
+    x = num;
+    for(var i = 0; i < category.length; i++){
+      document.getElementById('name' + (i+1)).innerHTML = category[i].name;
+      document.getElementById('image' + (i+1)).src = category[i].image;
+      document.getElementById('size' + (i+1)).innerHTML = '';
+      var options = '';
+      for(var j = 0; j < category[i].sizeList.length; j++){
+        options += '<option value="'+ category[i].sizeList[j] +'" >';
+      }
+      document.getElementById('size' + (i+1)).innerHTML = options;
+      document.getElementById('heat' + (i+1)).innerHTML = '';
+      options = '';
+      for(var j = 0; j < category[i].spicinessList.length; j++){
+          options += '<option value="'+ category[i].spicinessList[j] +'" >';
+        }
+      document.getElementById('heat' + (i+1)).innerHTML = options;
+      document.getElementById('price' + (i+1)).innerHTML = 'Price:  $' + category[i].priceList[0];
+    }
+  }
+  function priceUpdate1(){
+    const sized = document.getElementById('sizer1').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[0].sizeList.length; i++)
+        if(appetizer[0].sizeList[i] == sized)
+          document.getElementById('price1').innerHTML = 'Price:  $' + appetizer[0].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[0].sizeList.length; i++)
+        if(mainDish[0].sizeList[i] == sized)
+          document.getElementById('price1').innerHTML = 'Price:  $' + mainDish[0].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[0].sizeList.length; i++)
+        if(drinks[0].sizeList[i] == sized)
+          document.getElementById('price1').innerHTML = 'Price:  $' + drinks[0].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[0].sizeList.length; i++)
+        if(desserts[0].sizeList[i] == sized)
+          document.getElementById('price1').innerHTML = 'Price:  $' + desserts[0].priceList[i];
+    document.getElementById('sizer1').innerHTML = document.getElementById('sizer1').blur();
+  }
+  function priceUpdate2(){
+    const sized = document.getElementById('sizer2').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[1].sizeList.length; i++)
+        if(appetizer[1].sizeList[i] == sized)
+          document.getElementById('price2').innerHTML = 'Price:  $' + appetizer[1].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[1].sizeList.length; i++)
+        if(mainDish[1].sizeList[i] == sized)
+          document.getElementById('price2').innerHTML = 'Price:  $' + mainDish[1].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[1].sizeList.length; i++)
+        if(drinks[1].sizeList[i] == sized)
+          document.getElementById('price2').innerHTML = 'Price:  $' + drinks[1].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[1].sizeList.length; i++)
+        if(desserts[1].sizeList[i] == sized)
+          document.getElementById('price2').innerHTML = 'Price:  $' + desserts[1].priceList[i];
+    document.getElementById('sizer2').innerHTML = document.getElementById('sizer2').blur();
+  }
+  function priceUpdate3(){
+    const sized = document.getElementById('sizer3').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[2].sizeList.length; i++)
+        if(appetizer[2].sizeList[i] == sized)
+          document.getElementById('price3').innerHTML = 'Price:  $' + appetizer[2].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[2].sizeList.length; i++)
+        if(mainDish[2].sizeList[i] == sized)
+          document.getElementById('price3').innerHTML = 'Price:  $' + mainDish[2].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[2].sizeList.length; i++)
+        if(drinks[2].sizeList[i] == sized)
+          document.getElementById('price3').innerHTML = 'Price:  $' + drinks[2].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[2].sizeList.length; i++)
+        if(desserts[2].sizeList[i] == sized)
+          document.getElementById('price3').innerHTML = 'Price:  $' + desserts[2].priceList[i];
+    document.getElementById('sizer3').innerHTML = document.getElementById('sizer3').blur();
+  }
+  function priceUpdate4(){
+    const sized = document.getElementById('sizer4').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[3].sizeList.length; i++)
+        if(appetizer[3].sizeList[i] == sized)
+          document.getElementById('price4').innerHTML = 'Price:  $' + appetizer[3].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[3].sizeList.length; i++)
+        if(mainDish[3].sizeList[i] == sized)
+          document.getElementById('price4').innerHTML = 'Price:  $' + mainDish[3].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[3].sizeList.length; i++)
+        if(drinks[3].sizeList[i] == sized)
+          document.getElementById('price4').innerHTML = 'Price:  $' + drinks[3].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[3].sizeList.length; i++)
+        if(desserts[3].sizeList[i] == sized)
+          document.getElementById('price4').innerHTML = 'Price:  $' + desserts[3].priceList[i];
+    document.getElementById('sizer4').innerHTML = document.getElementById('sizer4').blur();
+  }
+  function priceUpdate5(){
+    const sized = document.getElementById('sizer5').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[4].sizeList.length; i++)
+        if(appetizer[4].sizeList[i] == sized)
+          document.getElementById('price5').innerHTML = 'Price:  $' + appetizer[4].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[4].sizeList.length; i++)
+        if(mainDish[4].sizeList[i] == sized)
+          document.getElementById('price5').innerHTML = 'Price:  $' + mainDish[4].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[4].sizeList.length; i++)
+        if(drinks[4].sizeList[i] == sized)
+          document.getElementById('price5').innerHTML = 'Price:  $' + drinks[4].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[4].sizeList.length; i++)
+        if(desserts[4].sizeList[i] == sized)
+          document.getElementById('price5').innerHTML = 'Price:  $' + desserts[4].priceList[i];
+    document.getElementById('sizer5').innerHTML = document.getElementById('sizer5').blur();
+  }
+  function priceUpdate6(){
+    const sized = document.getElementById('sizer6').value;
+    if(x == 0)
+      for(var i = 0; i < appetizer[5].sizeList.length; i++)
+        if(appetizer[5].sizeList[i] == sized)
+          document.getElementById('price6').innerHTML = 'Price:  $' + appetizer[5].priceList[i];
+    if(x == 1)
+      for(var i = 0; i < mainDish[5].sizeList.length; i++)
+        if(mainDish[5].sizeList[i] == sized)
+          document.getElementById('price6').innerHTML = 'Price:  $' + mainDish[5].priceList[i];
+    if(x == 2)
+      for(var i = 0; i < drinks[5].sizeList.length; i++)
+        if(drinks[5].sizeList[i] == sized)
+          document.getElementById('price6').innerHTML = 'Price:  $' + drinks[5].priceList[i];
+    if(x == 3)
+      for(var i = 0; i < desserts[5].sizeList.length; i++)
+        if(desserts[5].sizeList[i] == sized)
+          document.getElementById('price6').innerHTML = 'Price:  $' + desserts[5].priceList[i];
+    document.getElementById('sizer6').innerHTML = document.getElementById('sizer6').blur();
+  }
+  window.onload = function(){menuItems(appetizer,0)};
+</script>
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Dragon Court -- Menu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:red;">
+        <table style="width:100%;border:5px #D4AF37;border-style:solid none solid none;border-collapse: collapse;">
+          <tr style="background:">
+            <th style="width:16%"><button name="appetizer" onclick="menuItems(appetizer,0)" style="background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Appetizer</button></th>
+            <th style="width:16%"><button name="Main Dish" onclick="menuItems(mainDish,1)" style="background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Main Dish</button></th>
+            <th style="width:16%"><button name="Drinks" onclick="menuItems(drinks,2)" style="background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Drinks</button></th>
+            <th style="width:16%"><button name="Desserts" onclick="menuItems(desserts,3)" style="background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Dessert</button></th>
+            <th style="width:16%"><div style="display:flex;width:300px;height:50px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;justify-content:center;align-items:center;">
+                    <label for="search">Search:</label>
+                    <input type="search" id="search" name="search"><br><br>
+            </div></th>
+            <form class="item" action="/profile" method="post">
+            <th style="width:16%"><button name="User Profile" style="background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">User Profile</button></th>
+            </form>
+          </tr>
+        </table>
+        <div style="display:flex;flex-wrap:wrap;">
+          <form class="item" action="/addFood1" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name1" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image1" src="Pepsi.jpg" style="width:350px;height:250px;object-fit:cover"></img></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer1">Size:</label>
+                          <input list="size1" name="sizer1" id="sizer1" onfocus="this.value=''" onchange="priceUpdate1();">
+                          <datalist id="size1">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price1"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr1">Spiciness:</label>
+                          <input class = "form-group" list="heat1" name="heatr1" id="heatr1">
+                          <datalist id="heat1">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity1">Quantity:</label>
+                              <input type="number" id="quantity1" name="quantity1" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          <form class="item" action="/addFood2" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name2" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image2"src="" style="width:350px;height:250px"></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer2">Size:</label>
+                          <input list="size2" name="sizer2" id="sizer2" onchange="priceUpdate2();">
+                          <datalist id="size2">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price2"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr2">Spiciness:</label>
+                          <input class = "form-group" list="heat2" name="heatr2" id="heatr2">
+                          <datalist id="heat2">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity2">Quantity:</label>
+                              <input type="number" id="quantity2" name="quantity2" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          <form class="item" action="/addFood3" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name3" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image3"src="" style="width:350px;height:250px"></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer3">Size:</label>
+                          <input list="size3" name="sizer3" id="sizer3" onchange="priceUpdate3();">
+                          <datalist id="size3">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price3"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr3">Spiciness:</label>
+                          <input class = "form-group" list="heat3" name="heatr3" id="heatr3">
+                          <datalist id="heat3">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity3">Quantity:</label>
+                              <input type="number" id="quantity3" name="quantity3" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          <form class="item" action="/addFood4" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name4" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image4"src="" style="width:350px;height:250px"></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer4">Size:</label>
+                          <input list="size4" name="sizer4" id="sizer4" onchange="priceUpdate4();">
+                          <datalist id="size4">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price4"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr4">Spiciness:</label>
+                          <input class = "form-group" list="heat4" name="heatr4" id="heatr4">
+                          <datalist id="heat4">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity4">Quantity:</label>
+                              <input type="number" id="quantity4" name="quantity4" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          <form class="item" action="/addFood5" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name5" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image5"src="" style="width:350px;height:250px"></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer5">Size:</label>
+                          <input list="size5" name="sizer5" id="sizer5" onchange="priceUpdate5();">
+                          <datalist id="size5">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price5"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr5">Spiciness:</label>
+                          <input class = "form-group" list="heat5" name="heatr5" id="heatr5">
+                          <datalist id="heat5">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity5">Quantity:</label>
+                              <input type="number" id="quantity5" name="quantity5" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          <form class="item" action="/addFood6" method="post">
+                <div style="padding-top:50px;padding-left:50px">
+                  <div style="width:350px;height:375px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;">
+                      <div style="display:grid;grid-template-columns:auto;justify-content:center;align-items:center;">
+                          <div class="form-group" id="name6" style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:20px;"></div>
+                          <div class = "form-group"><img id="image6"src="" style="width:350px;height:250px"></div>
+                          <div>
+                          <div class = "form-group" style="display:inline-block">  
+                          <label for="sizer6">Size:</label>
+                          <input list="size6" name="sizer6" id="sizer6" onchange="priceUpdate6();">
+                          <datalist id="size6">
+                          </datalist>
+                          </div>
+                          <div class = "form-group" style="display:inline-block"><div id="price6"></div></div>
+                          </div>
+                          <div class = "form-group">
+                          <label for="heatr6">Spiciness:</label>
+                          <input class = "form-group" list="heat6" name="heatr6" id="heatr6">
+                          <datalist id="heat6">
+                          </datalist>
+                          </div>
+                          <div>
+                            <div class = "form-group" style="display:inline-block">
+                              <label for="quantity6">Quantity:</label>
+                              <input type="number" id="quantity6" name="quantity6" min="1" value="1">
+                            </div>
+                            <div class = "form-group" style="display:inline-block">
+                              <input type="submit" value="Add to Cart">
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          </div>          
+          <form class="item" action="/checkout" method="post">
+          <button style="position: fixed;bottom: 0px;right: 0px;background-color:#CFD53B; border:2px solid;border-radius:5px;border-color:#D4AF37; color:#000000;height: 50px;width: 200px;font:14">Checkout</button>
+          </form>
+    </body>
+</html>
